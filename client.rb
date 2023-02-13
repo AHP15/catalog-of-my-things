@@ -18,7 +18,7 @@ class Client
       'Exit'
     ]
 
-    puts 'Please shoose an option by entring a number:'
+    puts 'Please choose an option by entering a number:'
 
     options.each_with_index do |option, i|
       puts "#{i + 1} - #{option}"
