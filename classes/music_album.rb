@@ -6,10 +6,6 @@ class MusicAlbum < Item
     super(publish_date)
   end
 
-  def can_be_archived?
-    super() && @on_spotify
-  end
-
   def to_hash
     {
       'id' => @id,
@@ -18,7 +14,14 @@ class MusicAlbum < Item
       'genre' => @genre&.to_hash,
       'label' => @label&.to_hash,
       'sourse' => @sourse&.to_hash,
-      'author' => @author&.to_hash
+      'author' => @author&.to_hash,
+      'class' => self.class.name
     }
+  end
+
+  private
+
+  def can_be_archived?
+    super() && @on_spotify
   end
 end

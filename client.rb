@@ -49,13 +49,13 @@ class Client
     publish_date = validate_input(message, ->(input) do input.match(date_regex) end)
 
     # on spotify?
-    message = 'Is on Spotify: '
-    possible_input = %w[true false True False t f T F]
-    on_spotify = validate_input(message, ->(input) do possible_input.include?(input) end)
+    message = 'Is on Spotify (Yes/No or Y/N): '
+    possible_input = %w[yes no y n]
+    on_spotify = validate_input(message, ->(input) do possible_input.include?(input.downcase) end)
 
     # return the data
-    true_inputs = %w[true True t T]
-    { 'publish_date' => publish_date, 'on_spotify' => true_inputs.include?(on_spotify) }
+    true_inputs = %w[yes no y n]
+    { 'publish_date' => publish_date, 'on_spotify' => true_inputs.include?(on_spotify.downcase) }
   end
 
   def movie_info

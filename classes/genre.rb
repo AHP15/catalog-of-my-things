@@ -16,7 +16,8 @@ class Genre
     {
       'id' => @id,
       'name' => @name,
-      'items' => @items
+      'items' => @items,
+      'class' => self.class.name
     }
   end
 end
