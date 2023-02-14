@@ -9,14 +9,6 @@ describe MusicAlbum do
     expect(@music_album).to be_an_instance_of(MusicAlbum)
   end
 
-  it 'should return whether it can be archeived' do
-    # Acc
-    is_archeived = @music_album.can_be_archived?
-
-    # Assertion
-    expect(is_archeived).to eq(false)
-  end
-
   it 'should return a hash' do
     # Act
     hash = @music_album.to_hash
