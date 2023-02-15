@@ -18,7 +18,7 @@ CREATE TABLE music_album(
   publish_date VARCHAR(12),
   genre VARCHAR(20),
   label VARCHAR(20),
-  sourse VARCHAR(20),
+  source VARCHAR(20),
   author VARCHAR(20),
   PRIMARY KEY(id)
 );
