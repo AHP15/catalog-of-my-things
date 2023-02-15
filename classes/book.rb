@@ -9,7 +9,7 @@ class Book < Item
     @cover_state = cover_state
   end
 
-  def to_json(*args)
+  def to_json(*_args)
     {
       'publisher' => @publisher,
       'cover_state' => @cover_state,
