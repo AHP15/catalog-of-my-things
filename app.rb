@@ -39,7 +39,6 @@ class App
     end
   end
   # we can add more cases here
-  end
 
   def add_data(option)
     case option
