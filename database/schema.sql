@@ -1,21 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 CREATE TABLE book(
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   items_id INT REFERENCES items(id),
