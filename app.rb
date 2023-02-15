@@ -1,25 +1,46 @@
+require 'fileutils'
+require 'json'
+
 require_relative './client'
+require_relative './classes/music_album'
 
 class App
   attr_reader :client
 
   def initialize
-    @items = []
+    @genres = data('storage', 'genres.json') || []
+    @music_albums = data('storage', 'music_albums.json') || []
+  end
+
+  def data(directory, filename)
+    FileUtils.mkdir_p(directory)
+    file_path = "./#{directory}/#{filename}"
+    File.exist?(file_path) && JSON.parse(File.read(file_path))
+  end
+
+  def store_data
+    File.write('./storage/genres.json', JSON.pretty_generate(@genres))
+    File.write('./storage/music_albums.json', JSON.pretty_generate(@music_albums))
   end
 
   def list_data(option)
-    # this function is not implemented yet
-    puts @client
-    puts option
+    case option
+    when '2'
+      @client.print_data(@music_albums)
+    when '5'
+      @client.print_data(@genres)
+    end
+    # we can add more cases here
   end
 
   def add_data(option)
-    # this function is not implemented yet
-    # you can ask the user for more input based on the option
-    # you can do something like this 'book_info = @client.book_info'
-    # the book_info() will be implemented on the Client class
-    puts @client
-    puts option
+    case option
+    when '10'
+      album_data = @client.album_info
+      music_album = MusicAlbum.new(album_data['publish_date'], album_data['on_spotify'])
+      @music_albums << music_album.to_hash
+    end
+    # we can add more cases here
   end
 
   def run
@@ -28,8 +49,8 @@ class App
       option = client.option
       break if option == '13'
 
-      list_data(option) unless option.to_i <= 8
-      add_data(option) unless option.to_i > 8
+      list_data(option) if option.to_i <= 8
+      add_data(option) if option.to_i > 8
     end
   end
 end
