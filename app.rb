@@ -3,8 +3,6 @@ require 'json'
 require_relative './client'
 require_relative './classes/book_service'
 require_relative './classes/label_service'
-
-require_relative './client'
 require_relative './classes/music_album'
 
 class App
@@ -32,29 +30,21 @@ class App
     case option
     when '1'
       @books.list
-    when '6'
-      @books.label_list
-    end
-  end
-
-  def add_data(option)
-    # you can ask the user for more input based on the option
-    # you can do something like this 'book_info = @client.book_info'
-    # the book_info() will be implemented on the Client class
-    case option
-    when '9'
-      @books.create
-    end
     when '2'
       @client.print_data(@music_albums)
     when '5'
       @client.print_data(@genres)
+    when '6'
+      @books.label_list
     end
-    # we can add more cases here
+  end
+  # we can add more cases here
   end
 
   def add_data(option)
     case option
+    when '9'
+      @books.create
     when '10'
       album_data = @client.album_info
       music_album = MusicAlbum.new(album_data['publish_date'], album_data['on_spotify'])
