@@ -1,13 +1,16 @@
 require 'fileutils'
 require 'json'
-
 require_relative './client'
+require_relative './classes/book_service'
+require_relative './classes/label_service'
 require_relative './classes/music_album'
 
 class App
   attr_reader :client
 
   def initialize
+    @books = BookService.new
+    @items = []
     @genres = data('storage', 'genres.json') || []
     @music_albums = data('storage', 'music_albums.json') || []
   end
@@ -25,16 +28,22 @@ class App
 
   def list_data(option)
     case option
+    when '1'
+      @books.list
     when '2'
       @client.print_data(@music_albums)
     when '5'
       @client.print_data(@genres)
+    when '6'
+      @books.label_list
     end
-    # we can add more cases here
   end
+  # we can add more cases here
 
   def add_data(option)
     case option
+    when '9'
+      @books.create
     when '10'
       album_data = @client.album_info
       music_album = MusicAlbum.new(album_data['publish_date'], album_data['on_spotify'])
