@@ -4,6 +4,7 @@ require_relative './client'
 require_relative './classes/book_service'
 require_relative './classes/game_service'
 require_relative './classes/music_album'
+require_relative './classes/genre'
 
 class App
   attr_reader :client
@@ -52,9 +53,16 @@ class App
       album_data = @client.album_info
       music_album = MusicAlbum.new(album_data['publish_date'], album_data['on_spotify'])
       @music_albums << music_album.to_hash
+
+      album_data['genre_name'].nil? && return
+
+      genre = Genre.new(album_data['genre_name'])
+      genre.add_item(music_album)
+      @genres << genre.to_hash
     when '12'
       @games.create
     end
+    puts 'successfully added'
   end
 
   def run

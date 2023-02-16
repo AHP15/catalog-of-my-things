@@ -11,7 +11,7 @@ class MusicAlbum < Item
       'id' => @id,
       'on_spotify' => @on_spotify,
       'publish_date' => @publish_date,
-      'genre' => @genre&.to_hash,
+      'genre' => @genre&.name,
       'label' => @label&.to_hash,
       'sourse' => @sourse&.to_hash,
       'author' => @author&.to_hash,

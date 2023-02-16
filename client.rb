@@ -53,9 +53,19 @@ class Client
     possible_input = %w[yes no y n]
     on_spotify = validate_input(message, ->(input) do possible_input.include?(input.downcase) end)
 
+    # ask for genre
+    message = 'To add genre please type (1) otherwise type (2): '
+    add_genre = validate_input(message, ->(input) do %w[1 2].include?(input) end)
+    genre_name = nil
+    genre_name = validate_input('Enter genre name: ') if add_genre == '1'
+
     # return the data
     true_inputs = %w[yes no y n]
-    { 'publish_date' => publish_date, 'on_spotify' => true_inputs.include?(on_spotify.downcase) }
+    {
+      'publish_date' => publish_date,
+      'on_spotify' => true_inputs.include?(on_spotify.downcase),
+      'genre_name' => genre_name
+    }
   end
 
   def movie_info
