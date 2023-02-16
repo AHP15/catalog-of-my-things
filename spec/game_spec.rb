@@ -1,5 +1,5 @@
-require 'timecop' # The Timecop gem is used to freeze the current time for the duration of each test
 require_relative '../classes/game'
+require 'timecop' # The Timecop gem is used to freeze the current time for the duration of each test
 
 describe Game do
   let(:multiplayer) { true }
