@@ -54,7 +54,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 [Catalog Of My things] <a name="about-project"></a>
 
-> **[your_project__name]** is a ruby console app that allows the user to store different types of item like games and music albums and retrive them
+> **[Catalog Of My things]** is a ruby console app that allows the user to store different types of item like games and music albums and retrive them
 
 ## 🛠 Built With <a name="built-with"></a>
 
