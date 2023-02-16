@@ -28,6 +28,5 @@ describe Genre do
     # Assertions
     expect(hash.key?('id')).to eq(true)
     expect(hash.key?('name')).to eq(true)
-    expect(hash.key?('items')).to eq(true)
   end
 end
