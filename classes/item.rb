@@ -18,6 +18,16 @@ class Item
     genre.add_item(self) unless genre.items.include?(self)
   end
 
+  def label=(label)
+    @label = label
+    label.add_item(self) unless label.items.include?(self)
+  end
+
+  def author=(author)
+    @author = author
+    author.add_item(self) unless author.items.include?(self)
+  end
+
   private
 
   def can_be_archived?
